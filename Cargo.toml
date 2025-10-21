@@ -1,0 +1,10 @@
+[package]
+name = "rastreador"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+nix = { version = "0.30.1", features = ["ptrace", "process", "signal"] }
+libc = "0.2"
+clap = { version = "4.5.4", features = ["derive"] }
+prettytable = "0.10.0"  # para imprimir la tabla final bonita
