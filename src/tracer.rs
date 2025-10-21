@@ -28,26 +28,36 @@ pub fn build_syscall_map() -> HashMap<u64, &'static str> {
         (1, "write"),
         (2, "open"),
         (3, "close"),
+        (5, "fstat"),
+        (8, "lseek"),
         (9, "mmap"),
         (11, "munmap"),
+        (12, "brk"),
+        (16, "ioctl"),
+        (21, "access"),
+        (22, "pipe"),
         (39, "getpid"),
+        (41, "socket"),
+        (42, "connect"),
+        (43, "accept"),
+        (44, "sendto"),
+        (45, "recvfrom"),
         (57, "fork"),
         (59, "execve"),
         (60, "exit"),
         (61, "wait4"),
-        (231, "exit_group"),
-        (257, "openat"),
-        (17, "pread64"),
-        (32, "dup"),
-        (33, "pipe"),
-        (41, "socket"),
-        (42, "connect"),
-        (44, "sendto"),
-        (45, "recvfrom"),
-        (63, "uname"),
+        (80, "uname"),
+        (133, "rt_sigaction"),
         (158, "arch_prctl"),
         (202, "futex"),
+        (257, "openat"),
         (262, "newfstatat"),
+        (87, "unlink"),
+        (83, "chmod"),
+        (84, "chown"),
+        (39, "getpid"),
+        (90, "mkdir"),
+        (91, "rmdir"),
     ])
 }
 
@@ -224,12 +234,14 @@ pub fn run_tracer(verbose: bool, step: bool, prog_and_args: Vec<String>) {
 
             let mut table = Table::new();
             table.add_row(Row::new(vec![Cell::new("System Call"), Cell::new("Veces")]));
+
             for (num, cnt) in vec_counts {
                 table.add_row(Row::new(vec![
-                    Cell::new(&syscall_name(&syscall_map, num)),
+                    Cell::new(&syscall_name(&syscall_map, num)), // si no está en el mapa, aparece como sys_<num>
                     Cell::new(&cnt.to_string()),
                 ]));
             }
+
             table.printstd();
         }
         Err(e) => eprintln!("Error en fork: {}", e),
