@@ -90,13 +90,11 @@ El programa quedó funcional cumpliendo todos los requisitos principales: ejecuc
 
 **Reporte de commits de git:**
 
-- `commit a1b2c3d` Inicialización proyecto y estructura base.
-- `commit b2c3d4e` Implementación de fork y execv.
-- `commit c3d4e5f` Implementación de ptrace y rastreo de syscalls.
-- `commit d4e5f6g` Agregado modo verbose y step.
-- `commit e5f6g7h` Generación de tabla acumulativa y ordenamiento.
-- `commit f6g7h8i` Pruebas y corrección de errores.
-- `commit g7h8i9j` Documentación final y limpieza de código.
+- `commit 3411be3` Initial commit
+- `commit 250dd77` This repo was created late the code was previously developed during weekend
+- `commit f98196e` Readme file
+- `commit 335fbc3` git ignore agregado
+
 
 **Calificación autoevaluada según rúbrica:** 5/5 (cumple todas las secciones requeridas).
 
